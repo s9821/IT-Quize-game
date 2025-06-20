@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMaster Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="w-full max-w-3xl mx-auto">
+        <!-- Quiz Intro Screen -->
+        <div id="intro-screen" class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                CodeMaster Quiz
+            </h1>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">
+                Test your programming knowledge with this interactive quiz featuring questions about JavaScript, HTML, CSS, and general computer science concepts.
+            </p>
+            <div class="mb-8">
+                <div class="flex justify-center gap-4 mb-4">
+                    <div class="bg-slate-800 p-4 rounded-lg">
+                        <div class="text-blue-400 font-bold text-xl">10</div>
+                        <div class="text-slate-400 text-sm">Questions</div>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-lg">
+                        <div class="text-purple-400 font-bold text-xl">30s</div>
+                        <div class="text-slate-400 text-sm">Per Question</div>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-lg">
+                        <div class="text-emerald-400 font-bold text-xl">3</div>
+                        <div class="text-slate-400 text-sm">Difficulty Levels</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-8">
+                <label for="difficulty" class="block text-sm font-medium mb-2">Select Difficulty</label>
+                <select id="difficulty" class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <button id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 pulse">
+                Start Quiz
+            </button>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div class="text-xl font-semibold">
+                    Question <span id="current-question">1</span>/<span id="total-questions">10</span>
+                </div>
+                <div class="timer bg-slate-800 px-4 py-2 rounded-lg font-mono">
+                    <span id="time">30</span>s
+                </div>
+            </div>
+            
+            <div class="progress-bar mb-6 rounded-full overflow-hidden">
+                <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+            </div>
+            
+            <div id="question-card" class="question-card p-6 mb-6">
+                <div id="question" class="text-xl mb-6"></div>
+                <div id="options" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+            </div>
+            
+            <div class="flex justify-between">
+                <button id="next-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-all hidden">
+                    Next Question
+                </button>
+                <div id="score" class="text-lg font-semibold">
+                    Score: <span id="score-value">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="hidden text-center">
+            <h1 class="text-4xl font-bold mb-6">Quiz Completed!</h1>
+            <div class="mb-8">
+                <div class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 p-1 rounded-full">
+                    <div class="bg-slate-900 p-8 rounded-full">
+                        <div class="text-5xl font-bold mb-2"><span id="final-score">0</span>/10</div>
+                        <div class="text-lg text-slate-400">Your Score</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <div class="text-blue-400 font-bold text-xl"><span id="correct-answers">0</span></div>
+                    <div class="text-slate-400 text-sm">Correct Answers</div>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <div class="text-purple-400 font-bold text-xl"><span id="incorrect-answers">0</span></div>
+                    <div class="text-slate-400 text-sm">Incorrect Answers</div>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <div class="text-emerald-400 font-bold text-xl"><span id="time-taken">0</span>s</div>
+                    <div class="text-slate-400 text-sm">Time Taken</div>
+                </div>
+            </div>
+            <button id="restart-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105">
+                Restart Quiz
+            </button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
